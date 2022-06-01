@@ -1,7 +1,7 @@
 let
   myNixPkgs = import <nixpkgs> {};
   hls = myNixPkgs.haskell-language-server.override { dynamic = true; };
-  myGhc = myNixPkgs.ghc.withPackages (hp: with hp; [ zlib ]);
+  myGhc = myNixPkgs.ghc.withPackages (hp: with hp; [ zlib hspec hspec-contrib HUnit QuickCheck]);
 in
 
   myNixPkgs.mkShell {
@@ -16,7 +16,7 @@ in
           echo "system-ghc: true" >> $HOME/.stack/config.yaml
       fi
       echo "Installing Hoogle..."
-      stack install hoogle > /dev/null 2>&1
+      stack install hoogle
       echo "Done"
       export PATH="$PATH:$HOME/.local/bin"
       hoogle > /dev/null 2>&1

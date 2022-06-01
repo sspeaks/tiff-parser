@@ -21,6 +21,6 @@
   // "postCreateCommand": "uname -a",
   // Comment out to connect as root instead. To add a non-root user, see: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/aoc,type=bind",
-  "workspaceFolder": "/home/vscode/aoc"
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/workspace,type=bind",
+  "workspaceFolder": "/home/vscode/workspace"
 }
