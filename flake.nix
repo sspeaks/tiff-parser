@@ -7,5 +7,6 @@
   {
     packages = (import ./default.nix) {pkgs = nixpkgs.legacyPackages.${system};};
     defaultPackage = self.packages.${system}.tiffParser;
+    devShell = (import ./shell.nix) {pkgs = nixpkgs.legacyPackages.${system};};
   });
 }
