@@ -1,0 +1,13 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:TiffParser"
+
+    - path: "app/Main.hs"
+      component: "TiffParser:exe:TiffParser-exe"
+
+    - path: "app/Paths_TiffParser.hs"
+      component: "TiffParser:exe:TiffParser-exe"
+
+    - path: "test"
+      component: "TiffParser:test:TiffParser-test"

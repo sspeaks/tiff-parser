@@ -6,7 +6,7 @@ let
   shell = pkgs.haskellPackages.shellFor {
     packages = ps : [ p ];
     withHoogle = true;
-    buildInputs = with pkgs.haskellPackages; [ haskell-language-server stylish-haskell ];
+    buildInputs = with pkgs.haskellPackages; [ haskell-language-server stylish-haskell implicit-hie ];
   };
 in
   shell
