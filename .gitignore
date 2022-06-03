@@ -3,3 +3,5 @@
 dist-newstyle
 cabal.project.*
 result
+result-doc
+*.profile*
