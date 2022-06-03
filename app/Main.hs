@@ -3,4 +3,4 @@ module Main where
 import TiffParser
 
 main :: IO ()
-main = undefined
+main = putStrLn  "Hello World"
