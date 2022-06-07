@@ -6,11 +6,11 @@ import qualified Data.ByteString as BS hiding (ByteString)
 import           Data.Word       (Word8)
 import           GHC.ByteOrder   (ByteOrder (BigEndian, LittleEndian))
 
-data Tiff = TiffFile Header
+newtype Tiff = TiffFile Header
 
 -- II = LittleEndian
 -- MM = BigEndian
-data Header = Header ByteOrder
+newtype Header = Header ByteOrder
 
 
 wordsToNum :: ByteOrder -> ByteString -> Int
