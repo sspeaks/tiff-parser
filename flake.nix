@@ -5,9 +5,9 @@
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system: {
       packages =
-        (import ./default.nix) { pkgs = nixpkgs.legacyPackages.${system}; };
+        (import ./nix/default.nix) { pkgs = nixpkgs.legacyPackages.${system}; };
       defaultPackage = self.packages.${system}.tiffParser;
       devShell =
-        (import ./shell.nix) { pkgs = nixpkgs.legacyPackages.${system}; };
+        (import ./nix/shell.nix) { pkgs = nixpkgs.legacyPackages.${system}; };
     });
 }

@@ -3,7 +3,7 @@
 mkDerivation {
   pname = "TiffParser";
   version = "0.1.0.0";
-  src = ./.;
+  src = ../.;
   isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [ attoparsec base bytestring ];
