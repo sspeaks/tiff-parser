@@ -1,6 +1,5 @@
 {
   "name": "TiffParser",
-
   "dockerFile": "Dockerfile",
   "context": "${localWorkspaceFolder}",
   "build": {
@@ -19,19 +18,16 @@
     "PRELOAD_EXTENSIONS": "arrterian.nix-env-selector"
   },
   "mounts": [
-      "source=tiffParser-devcontainer-cache,target=/nix,type=volume"
-],
+    "source=tiffParser-devcontainer-cache,target=/nix,type=volume"
+  ],
   // disable command overriding and updating remote user ID
   "overrideCommand": false,
   "updateRemoteUserUID": false,
-
   "userEnvProbe": "loginShell",
-
   "extensions": [
     "arrterian.nix-env-selector",
-	  "haskell.haskell",
+    "haskell.haskell",
     "vigoo.stylish-haskell",
   ],
-
   "forwardPorts": []
 }
