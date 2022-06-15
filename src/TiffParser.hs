@@ -25,10 +25,7 @@ parserTiff :: Parser Tiff
 parserTiff = TiffFile <$> parseHeader
 
 parseHeader :: Parser Header
-parseHeader = Header <$> choice [string "MM" $> BigEndian, string "II" $> LittleEndian, fail "asdf" ]
-
-parseFailTest :: Parser ()
-parseFailTest = fail "asdf"
+parseHeader = Header <$> choice [string "MM" $> BigEndian, string "II" $> LittleEndian ]
 
 
 wordsToNum :: ByteOrder -> ByteString -> Int
