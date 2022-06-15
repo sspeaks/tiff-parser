@@ -1,5 +1,5 @@
-{ mkDerivation, attoparsec, base, bytestring, hpack, hspec
-, hspec-contrib, HUnit, lib, QuickCheck, hspec-attoparsec
+{ mkDerivation, attoparsec, base, binary, bytestring, hspec
+, hspec-attoparsec, hspec-contrib, HUnit, lib, QuickCheck
 }:
 mkDerivation {
   pname = "TiffParser";
@@ -7,13 +7,12 @@ mkDerivation {
   src = ./.;
   isLibrary = true;
   isExecutable = true;
-  libraryHaskellDepends = [ attoparsec base bytestring ];
-  libraryToolDepends = [ hpack ];
-  executableHaskellDepends = [ attoparsec base bytestring ];
+  libraryHaskellDepends = [ attoparsec base binary bytestring ];
+  executableHaskellDepends = [ base ];
   testHaskellDepends = [
-    attoparsec base bytestring hspec hspec-contrib HUnit QuickCheck hspec-attoparsec
+    attoparsec base binary bytestring hspec hspec-attoparsec
+    hspec-contrib HUnit QuickCheck
   ];
-  prePatch = "hpack";
   homepage = "https://github.com/githubuser/TiffParser#readme";
   license = lib.licenses.bsd3;
 }
