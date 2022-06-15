@@ -22,16 +22,21 @@ newtype Tiff = TiffFile Header deriving (Show, Eq)
 -- MM = BigEndian
 newtype Header = Header ByteOrder deriving (Show, Eq)
 
+parseTiff :: Parser Tiff
+parseTiff = TiffFile <$> parseHeader
 
-parserTiff :: Parser Tiff
-parserTiff = do
-    header <- parseHeader
-    let getNumToParse = let (Header bo) = header in numToWords16 bo
-    string . toStrict $ getNumToParse 42
-    return $ TiffFile header
+parseEndianness :: Parser ByteOrder
+parseEndianness = choice [string "MM" $> BigEndian, string "II" $> LittleEndian ]
 
 parseHeader :: Parser Header
-parseHeader = Header <$> choice [string "MM" $> BigEndian, string "II" $> LittleEndian ]
+parseHeader = do
+    header <- Header <$> parseEndianness
+
+    let getNumToParse = let (Header bo) = header in numToWords16 bo
+    let getNumFromString = let (Header bo) = header in wordsToNum bo
+
+    string . toStrict $ getNumToParse 42
+    return header
 
 numToWords16 :: ByteOrder -> Word16  -> ByteString
 numToWords16 bo num
