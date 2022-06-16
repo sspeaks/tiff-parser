@@ -20,7 +20,8 @@ import           Test.Hspec.Attoparsec      (Source ((~>)), shouldFailOn,
 
 main :: IO ()
 main = do
-  tiffFile <- BS.readFile "bali.tif"
+  baliTiff <- BS.readFile "test/bali.tif"
+  pandaTiff <- BS.readFile "test/panda.tif"
   hspec $ do
     describe "wordsToNum" $ do
       it "works for littleEndian" $ do
@@ -52,5 +53,7 @@ main = do
 
 
     describe "file test" $ do
-      it "file parses properly" $ do
-        parseTiff `shouldSucceedOn` tiffFile
+      it "MM file parses properly" $ do
+        parseTiff `shouldSucceedOn` baliTiff
+      it "II file parses proeprly" $ do
+        parseTiff `shouldSucceedOn` pandaTiff
